@@ -1,9 +1,9 @@
 public class Rueda {
     private String fabricante;
-    private String aro;
+    private int aro;
     private double ancho;
 
-    public Rueda(String fabricante, String aro, double ancho) {
+    public Rueda(String fabricante, int aro, double ancho) {
         this.fabricante = fabricante;
         this.aro = aro;
         this.ancho = ancho;
@@ -13,7 +13,7 @@ public class Rueda {
         return fabricante;
     }
 
-    public String getAro() {
+    public int getAro() {
         return aro;
     }
 

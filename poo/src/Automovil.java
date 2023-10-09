@@ -8,6 +8,7 @@ public class Automovil {
     private Estanque estanque;
     private Persona conductor;
     private Rueda[] ruedas;
+    private int indiceRuedas = 0;
 
     private TipoAutomovil tipo;
 
@@ -25,6 +26,7 @@ public class Automovil {
     public static final String COLOR_GRIS = "Gris oscuro";
     public Automovil(){
         this.id = ++utlimoId;
+        this.ruedas = new Rueda[5];
     }
 
     public Automovil(String fabricante, String modelo){
@@ -131,6 +133,13 @@ public class Automovil {
         this.ruedas = ruedas;
     }
 
+    public Automovil addRueda(Rueda rueda){
+        if(indiceRuedas < this.ruedas.length){
+            this.ruedas[indiceRuedas++] = rueda;
+        }
+        return this;
+    }
+
     public String verDetalle(){
 
     String detalle = "auto.id = " + getId() +
@@ -145,6 +154,18 @@ public class Automovil {
 
     if(this.getMotor() != null){
         detalle += "\nauto.cilindrada = " + this.motor.getCilindrada();
+    }
+
+    if(getConductor() != null){
+        detalle += "\nConductor Subaru: " + this.getConductor();
+    }
+
+    if(getRuedas() != null){
+        detalle += "\nRuedas del automovil:";
+        for (Rueda r: this.getRuedas()
+        ) {
+            detalle += "\n" + r.getFabricante() + ", " + r.getAro() + ", " + r.getAncho();
+        }
     }
 
     return detalle;
